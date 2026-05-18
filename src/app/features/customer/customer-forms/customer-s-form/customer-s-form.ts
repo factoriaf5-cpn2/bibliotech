@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, OnInit, signal } from '@angular/core';
 import { FormField, email, form, pattern, required } from '@angular/forms/signals';
 
 interface CustomerSignalFormModel {
@@ -18,7 +18,8 @@ interface CustomerSignalFormModel {
   styleUrl: './customer-s-form.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CustomerSForm {
+export class CustomerSForm implements OnInit {
+
   protected loyaltyOptions = ['bronze', 'silver', 'gold', 'platinum', 'VIP'] as const;
   protected stateOptions = ['active', 'inactive'] as const;
 
@@ -32,6 +33,8 @@ export class CustomerSForm {
     image: '',
   });
 
+  protected readonly customerId = input.required<string>();
+
   protected customerForm = form(this.customerModel, (schemaPath) => {
     required(schemaPath.fullName, { message: 'Full name is required.' });
     required(schemaPath.email, { message: 'Email is required.' });
@@ -42,6 +45,10 @@ export class CustomerSForm {
     });
     required(schemaPath.address, { message: 'Address is required.' });
   });
+
+  ngOnInit(): void {
+    this.customerModel.set({...this.customerModel(),fullName:this.customerId()})
+  }
 
   protected onSubmit(event: Event): void {
     event.preventDefault();

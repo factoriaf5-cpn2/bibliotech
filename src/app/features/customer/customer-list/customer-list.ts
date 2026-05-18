@@ -1,5 +1,5 @@
-import { Component, computed, signal } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, computed, inject, signal } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 import { ICustomer } from '../../interfaces/customer.interface';
 import { CustomerItem } from '../customer-item/customer-item';
 import { IconButton } from '../../../shared/ui/icon-button/icon-button';
@@ -14,8 +14,8 @@ import { form, FormField } from '@angular/forms/signals';
 })
 
 export class CustomerList {
+  private router = inject(Router);
   protected readonly customers = signal<ICustomer[]>(customers);
-
   protected readonly searchForm = form(signal<{ searchText: string }>(
     { searchText: '' }
   ))
@@ -32,4 +32,7 @@ export class CustomerList {
       this.customers().filter(e => !e.fullName.includes(fullName)));
   }
 
+  protected handleEditedUser(customerId:string){
+    this.router.navigate(['/customers',customerId]); 
+  }
 }

@@ -1,4 +1,5 @@
 import { Component, computed, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { ICustomer } from '../../interfaces/customer.interface';
 import { CustomerItem } from '../customer-item/customer-item';
 import { IconButton } from '../../../shared/ui/icon-button/icon-button';
@@ -7,7 +8,7 @@ import { customers } from '../../../data/customer-data';
 import { form, FormField } from '@angular/forms/signals';
 @Component({
   selector: 'app-customer-list',
-  imports: [CustomerItem, IconButton, FormField],
+  imports: [CustomerItem, IconButton, FormField, RouterLink],
   templateUrl: './customer-list.html',
   styleUrl: './customer-list.css',
 })

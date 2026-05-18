@@ -23,11 +23,11 @@ export const routes: Routes = [
         component: CustomerList,
       },
       {
-        path: 'customers/:customerId',
+        path: 'customers/new',
         component: CustomerSForm,
       },
-            {
-        path: 'customers/new',
+      {
+        path: 'customers/:customerId',
         component: CustomerSForm,
       },
 

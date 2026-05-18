@@ -22,10 +22,15 @@ export const routes: Routes = [
         path: 'customers',
         component: CustomerList,
       },
-            {
+      {
         path: 'customers/:customerId',
         component: CustomerSForm,
       },
+            {
+        path: 'customers/new',
+        component: CustomerSForm,
+      },
+
       {
         path:'**',
         component: Dashboard

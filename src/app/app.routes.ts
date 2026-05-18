@@ -16,7 +16,7 @@ export const routes: Routes = [
 
       {
         path: 'dashboard',
-        redirectTo: '/'
+        component: Dashboard
       },
       {
         path: 'customers',

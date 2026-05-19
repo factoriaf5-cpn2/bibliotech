@@ -59,6 +59,7 @@
               "buildTarget": "bibliotech:build:production"
             },
             "development": {
+              "hmr": true,
               "buildTarget": "bibliotech:build:development"
             }
           },

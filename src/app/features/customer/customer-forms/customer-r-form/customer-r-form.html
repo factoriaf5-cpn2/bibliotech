@@ -1,0 +1,65 @@
+<form class="customer-form" [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+  <div class="field">
+    <label for="fullName">Full name</label>
+    <input id="fullName" type="text" formControlName="fullName" />
+    @if (customerForm.controls.fullName.touched && customerForm.controls.fullName.hasError('required')) {
+    <small class="error">Full name is required.</small>
+    }
+  </div>
+
+  <div class="field">
+    <label for="email">Email</label>
+    <input id="email" type="email" formControlName="email" />
+    @if (customerForm.controls.email.touched && customerForm.controls.email.hasError('required')) {
+    <small class="error">Email is required.</small>
+    }
+    @if (customerForm.controls.email.touched && customerForm.controls.email.hasError('email')) {
+    <small class="error">Enter a valid email address.</small>
+    }
+  </div>
+
+  <div class="field">
+    <label for="phone">Phone</label>
+    <input id="phone" type="tel" formControlName="phone" />
+    @if (customerForm.controls.phone.touched && customerForm.controls.phone.hasError('required')) {
+    <small class="error">Phone is required.</small>
+    }
+    @if (customerForm.controls.phone.touched && customerForm.controls.phone.hasError('pattern')) {
+    <small class="error">Enter a valid phone number.</small>
+    }
+  </div>
+
+  <div class="field">
+    <label for="address">Address</label>
+    <input id="address" type="text" formControlName="address" />
+    @if (customerForm.controls.address.touched && customerForm.controls.address.hasError('required')) {
+    <small class="error">Address is required.</small>
+    }
+  </div>
+
+  <div class="field">
+    <label for="loyalty">Loyalty</label>
+    <select id="loyalty" formControlName="loyalty">
+      @for (loyalty of loyaltyOptions; track loyalty) {
+      <option [value]="loyalty">{{ loyalty }}</option>
+      }
+    </select>
+  </div>
+
+  <fieldset class="field fieldset">
+    <legend>State</legend>
+    @for (state of stateOptions; track state) {
+    <label class="radio-option">
+      <input type="radio" [value]="state" formControlName="state" />
+      {{ state }}
+    </label>
+    }
+  </fieldset>
+
+  <div class="field">
+    <label for="image">Image</label>
+    <input id="image" type="text" formControlName="image" />
+  </div>
+
+  <button type="submit" [disabled]="customerForm.invalid">Save customer</button>
+</form>

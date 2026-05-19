@@ -1,0 +1,152 @@
+<div class="mb-xl">
+  <h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">Directorio de Clientes</h2>
+  <p class="font-body-lg text-body-lg text-secondary">Gestiona la información y el historial de compras de tus
+    lectores.</p>
+</div>
+<!-- KPI Cards Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-xl">
+  <div
+    class="bg-surface-container-lowest p-md rounded-lg border border-outline-variant shadow-[0px_4px_12px_rgba(15,23,42,0.05)] flex items-center justify-between">
+    <div>
+      <p class="text-label-md font-label-md text-secondary uppercase tracking-wider mb-xs">Total de Clientes</p>
+      <h3 class="text-headline-md font-headline-md text-on-surface">850</h3>
+    </div>
+    <div class="w-12 h-12 bg-secondary-container rounded-lg flex items-center justify-center" aria-hidden="true">
+      <span class="material-symbols-outlined text-on-secondary-container" data-icon="groups">groups</span>
+    </div>
+  </div>
+  <div
+    class="bg-surface-container-lowest p-md rounded-lg border border-outline-variant shadow-[0px_4px_12px_rgba(15,23,42,0.05)] flex items-center justify-between">
+    <div>
+      <p class="text-label-md font-label-md text-secondary uppercase tracking-wider mb-xs">Clientes Activos</p>
+      <h3 class="text-headline-md font-headline-md text-on-surface">720</h3>
+    </div>
+    <div class="w-12 h-12 bg-primary-fixed rounded-lg flex items-center justify-center" aria-hidden="true">
+      <span class="material-symbols-outlined text-on-primary-fixed" data-icon="person_check">person_check</span>
+    </div>
+  </div>
+  <div
+    class="bg-surface-container-lowest p-md rounded-lg border border-outline-variant shadow-[0px_4px_12px_rgba(15,23,42,0.05)] flex items-center justify-between">
+    <div>
+      <p class="text-label-md font-label-md text-secondary uppercase tracking-wider mb-xs">Nuevos este mes</p>
+      <div class="flex items-center gap-xs">
+        <h3 class="text-headline-md font-headline-md text-on-surface">+15</h3>
+        <span
+          class="text-on-error-container bg-error-container px-1.5 py-0.5 rounded text-[10px] font-bold">+2.4%</span>
+      </div>
+    </div>
+    <div class="w-12 h-12 bg-tertiary-fixed rounded-lg flex items-center justify-center" aria-hidden="true">
+      <span class="material-symbols-outlined text-on-tertiary-fixed" data-icon="person_add">person_add</span>
+    </div>
+  </div>
+</div>
+<!-- Table & Filters Container -->
+<div
+  class="bg-surface-container-lowest rounded-lg border border-outline-variant shadow-[0px_4px_12px_rgba(15,23,42,0.05)]">
+  <!-- Toolbar -->
+  <div class="p-md border-b border-outline-variant flex flex-col md:flex-row gap-md items-center justify-between">
+    <div class="relative flex flex-1 gap-sm w-full md:w-auto">
+      <label for="search-input" class="sr-only">Buscar clientes por nombre o email</label>
+      <span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-outline"
+        aria-hidden="true">search</span>
+      <input id="search-input"
+        class="w-full bg-surface border border-outline-variant rounded-lg pl-10 pr-md py-2 font-body-md text-body-md focus:border-primary focus:ring-0 transition-all"
+        placeholder="Buscar por nombre o email..." type="text" [formField]="searchForm.searchText"
+        aria-label="Buscar clientes" />
+    </div>
+    <div class="flex items-center gap-sm w-full md:w-auto">
+      <button
+        class="flex items-center gap-xs px-md py-2 bg-surface-container-low border border-outline-variant rounded-lg text-secondary font-label-md hover:bg-surface-container-high transition-all"
+        aria-label="Abrir opciones de filtros avanzados">
+        <span class="material-symbols-outlined text-[20px]" data-icon="filter_list"
+          aria-hidden="true">filter_list</span>
+        Filtros
+      </button>
+      <label for="status-filter" class="sr-only">Filtrar por estado</label>
+      <select id="status-filter"
+        class="bg-surface border border-outline-variant rounded-lg px-md py-2 font-body-md text-body-md focus:border-primary focus:ring-0 transition-all text-secondary"
+        aria-label="Filtrar clientes por estado">
+        <option>Estado: Todos</option>
+        <option>Activo</option>
+        <option>Inactivo</option>
+      </select>
+      <label for="loyalty-filter" class="sr-only">Filtrar por nivel de lealtad</label>
+      <select id="loyalty-filter"
+        class="bg-surface border border-outline-variant rounded-lg px-md py-2 font-body-md text-body-md focus:border-primary focus:ring-0 transition-all text-secondary"
+        aria-label="Filtrar clientes por nivel de lealtad">
+        <option>Lealtad: Todos</option>
+        <option>Platino</option>
+        <option>Oro</option>
+        <option>Plata</option>
+      </select>
+      <button
+        class="bg-primary text-on-primary px-lg py-2 rounded-lg font-title-md hover:opacity-90 active:scale-[0.98] transition-all"
+        aria-label="Crear nuevo cliente">Nuevo Cliente</button>
+    </div>
+  </div>
+  <!-- Table Content -->
+  <div class="overflow-x-auto">
+    <table class="w-full text-left border-collapse" role="grid" aria-label="Lista de clientes">
+      <thead class="bg-surface-container-low">
+        <tr>
+          <th scope="col" class="px-md py-sm font-title-md text-secondary border-b border-outline-variant">Cliente</th>
+          <th scope="col" class="px-md py-sm font-title-md text-secondary border-b border-outline-variant">Email</th>
+          <th scope="col" class="px-md py-sm font-title-md text-secondary border-b border-outline-variant">Compras
+            Totales</th>
+          <th scope="col" class="px-md py-sm font-title-md text-secondary border-b border-outline-variant">Última Compra
+          </th>
+          <th scope="col" class="px-md py-sm font-title-md text-secondary border-b border-outline-variant">Estado</th>
+          <th scope="col" class="px-md py-sm font-title-md text-secondary border-b border-outline-variant text-right">
+            Acciones</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-outline-variant" role="rowgroup" aria-live="polite" aria-label="Clientes">
+
+        @for(customer of filterCostumers(); track $index){
+
+        <tr class="hover:bg-surface-container-low transition-colors group" app-customer-item [customer]="customer">
+          <div icon-button class="flex justify-end gap-xs" [item]="customer.fullName"
+            (eventEmitted)="handleDeletedUser($event)">
+            <span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span>
+          </div>
+          <div icon-button class="flex justify-end gap-xs" [item]="customer.fullName"
+            (eventEmitted)="handleDeletedUser($event)">
+            <span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
+          </div>
+        </tr>
+        }
+
+      </tbody>
+    </table>
+    <!-- Pagination -->
+    <div class="p-md flex items-center justify-between border-t border-outline-variant">
+      <p class="font-body-md text-secondary">Mostrando 1 a 4 de 850 clientes</p>
+      <div class="flex gap-xs">
+        <button
+          class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant hover:bg-surface-container-high transition-colors"
+          aria-label="Página anterior">
+          <span class="material-symbols-outlined" data-icon="chevron_left" aria-hidden="true">chevron_left</span>
+        </button>
+        <button
+          class="w-10 h-10 flex items-center justify-center rounded-lg border border-primary bg-primary-container text-white font-title-md"
+          aria-label="Página 1 (actual)" aria-current="page">1</button>
+        <button
+          class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant hover:bg-surface-container-high transition-colors font-title-md"
+          aria-label="Página 2">2</button>
+        <button
+          class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant hover:bg-surface-container-high transition-colors font-title-md"
+          aria-label="Página 3">3</button>
+        <button
+          class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant hover:bg-surface-container-high transition-colors"
+          aria-label="Página siguiente">
+          <span class="material-symbols-outlined" data-icon="chevron_right" aria-hidden="true">chevron_right</span>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile Navigation Toggle (Visible on small screens) -->
+    <div class="md:hidden fixed bottom-md right-md z-60">
+      <button class="w-14 h-14 bg-primary text-on-primary rounded-full shadow-lg flex items-center justify-center"
+        aria-label="Menú de navegación">
+        <span class="material-symbols-outlined" data-icon="menu" aria-hidden="true">menu</span>
+      </button>
+    </div>

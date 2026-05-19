@@ -1,0 +1,59 @@
+<form class="customer-form" (submit)="onSubmit($event)">
+  <div class="field">
+    <label for="fullName">Full name</label>
+    <input id="fullName" type="text" [formField]="customerForm.fullName" />
+    @if (customerForm.fullName().touched() && customerForm.fullName().invalid()) {
+    <small class="error">{{ customerForm.fullName().errors()[0]?.message }}</small>
+    }
+  </div>
+
+  <div class="field">
+    <label for="email">Email</label>
+    <input id="email" type="email" [formField]="customerForm.email" />
+    @if (customerForm.email().touched() && customerForm.email().invalid()) {
+    <small class="error">{{ customerForm.email().errors()[0]?.message }}</small>
+    }
+  </div>
+
+  <div class="field">
+    <label for="phone">Phone</label>
+    <input id="phone" type="tel" [formField]="customerForm.phone" />
+    @if (customerForm.phone().touched() && customerForm.phone().invalid()) {
+    <small class="error">{{ customerForm.phone().errors()[0]?.message }}</small>
+    }
+  </div>
+
+  <div class="field">
+    <label for="address">Address</label>
+    <input id="address" type="text" [formField]="customerForm.address" />
+    @if (customerForm.address().touched() && customerForm.address().invalid()) {
+    <small class="error">{{ customerForm.address().errors()[0]?.message }}</small>
+    }
+  </div>
+
+  <div class="field">
+    <label for="loyalty">Loyalty</label>
+    <select id="loyalty" [formField]="customerForm.loyalty">
+      @for (loyalty of loyaltyOptions; track loyalty) {
+      <option [value]="loyalty">{{ loyalty }}</option>
+      }
+    </select>
+  </div>
+
+  <fieldset class="field fieldset">
+    <legend>State</legend>
+    @for (state of stateOptions; track state) {
+    <label class="radio-option">
+      <input type="radio" [value]="state" [formField]="customerForm.state" />
+      {{ state }}
+    </label>
+    }
+  </fieldset>
+
+  <div class="field">
+    <label for="image">Image</label>
+    <input id="image" type="text" [formField]="customerForm.image" />
+  </div>
+
+  <button type="submit" [disabled]="!customerForm().valid()">Save customer</button>
+</form>

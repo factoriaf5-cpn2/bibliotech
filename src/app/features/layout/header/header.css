@@ -1,0 +1,25 @@
+/* Header theme styles: map visual tokens to CSS theme variables */
+header {
+  background-color: var(--color-surface);
+  color: var(--color-on-surface);
+  border-bottom: 1px solid var(--color-outline-variant);
+}
+
+header .material-symbols-outlined {
+  color: var(--color-primary);
+}
+
+header input[type='text'] {
+  background-color: var(--color-surface-container-low);
+  color: var(--color-on-surface);
+  border: 1px solid var(--color-outline-variant);
+}
+
+header .font-title-lg {
+  color: var(--color-primary);
+}
+
+/* Hover states */
+header button:hover {
+  background-color: var(--color-surface-container-high);
+}

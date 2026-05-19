@@ -1,0 +1,48 @@
+@let image = customer().image;
+@let name = customer().fullName;
+@let email = customer().email;
+@let state = customer().state;
+@let isActive = state === true;
+@let loyalty = customer().loyalty;
+
+<td class="px-md py-md">
+  <div class="flex items-center gap-sm">
+    <div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant">
+      <img class="w-full h-full object-cover" [src]="image" alt="avatar of {{name}}">
+    </div>
+    <div>
+      <p class="font-title-md text-on-surface">{{name}}</p>
+      <span [class]="getLoyaltyClasses(loyalty)"
+        class="text-xs font-bold px-1.5 py-0.5 rounded-full uppercase tracking-tighter" role="status"
+        [attr.aria-label]="'Nivel de lealtad: ' + loyalty">
+        {{loyalty}}
+      </span>
+    </div>
+  </div>
+</td>
+<td class="px-md py-md font-body-md text-secondary">
+  {{email}}
+
+</td>
+<td class="px-md py-md font-body-md text-on-surface font-semibold">
+  1.2400,00 €
+
+</td>
+<td class="px-md py-md font-body-md text-secondary">
+  12 Oct 2025
+
+</td>
+<td class="px-md py-md">
+  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium" role="status"
+    [class.bg-secondary-container]="isActive" [class.text-on-secondary-container]="isActive"
+    [class.bg-surface-container-high]="!isActive" [class.text-on-surface-variant]="!isActive"
+    [attr.aria-label]="'Estado del cliente: ' + (isActive ? 'Activo' : 'Inactivo')">
+    {{ isActive ? 'Activo' : 'Inactivo' }}
+  </span>
+
+</td>
+<td class="px-md py-md text-right">
+  <div class="flex justify-end gap-xs">
+    <ng-content></ng-content>
+  </div>
+</td>

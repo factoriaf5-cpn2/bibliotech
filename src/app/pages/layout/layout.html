@@ -1,0 +1,16 @@
+<app-aside></app-aside>
+<div class="flex-1 ml-64 flex flex-col">
+    <!-- TopNavBar -->
+
+    <app-header></app-header>
+    <!-- Main Content -->
+    <main class="p-lg max-w-container-max mx-auto w-full">
+<router-outlet></router-outlet>
+    </main>
+  </div>
+  <!-- Mobile Navigation Toggle (Visible on small screens) -->
+  <div class="md:hidden fixed bottom-md right-md z-[60]">
+    <button
+      class="w-14 h-14 bg-primary text-on-primary rounded-full shadow-lg flex items-center justify-center material-symbols-outlined"
+      data-icon="menu">menu</button>
+  </div>

@@ -6,6 +6,7 @@ import { IconButton } from '../../../shared/ui/icon-button/icon-button';
 import { customers } from '../../../data/customer-data';
 
 import { form, FormField } from '@angular/forms/signals';
+import { CustomerService } from '../services/customer';
 @Component({
   selector: 'app-customer-list',
   imports: [CustomerItem, IconButton, FormField, RouterLink],
@@ -15,7 +16,13 @@ import { form, FormField } from '@angular/forms/signals';
 
 export class CustomerList {
   private router = inject(Router);
-  protected readonly customers = signal<ICustomer[]>(customers);
+  private customerService = inject(CustomerService);
+  protected customers = computed(()=>[...this.customerService.customers()]);
+  // protected readonly customers = signal<ICustomer[]>(customers);
+  ngOnInit(){
+    this.customerService.loadCustomers();
+  }
+
   protected readonly searchForm = form(signal<{ searchText: string }>(
     { searchText: '' }
   ))
@@ -28,8 +35,8 @@ export class CustomerList {
     )
   })
   protected handleDeletedUser(fullName: string) {
-    this.customers.update(() =>
-      this.customers().filter(e => !e.fullName.includes(fullName)));
+  //   this.customers.update(() =>
+  //     this.customers().filter(e => !e.fullName.includes(fullName)));
   }
 
   protected handleEditedUser(customerId:string){
